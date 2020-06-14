@@ -1,4 +1,3 @@
-from tougher_on_turf.lib.utils import data_loader
 import pandas as pd
 from typing import Any, List
 
@@ -33,9 +32,5 @@ def get_player_injury_df(playerkey, isinjured, injury_data):
     else:
         player_injury_df = pd.DataFrame()
         player_injury_df[include_keys] = pd.DataFrame([[None for x in include_keys]])
-    print(player_injury_df)
+
     return player_injury_df
-
-
-def concat_df():
-    tmp = ''
