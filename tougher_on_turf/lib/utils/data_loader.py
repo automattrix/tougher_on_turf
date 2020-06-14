@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def load_playlist(data_path):
+def load_csv(data_path):
     df = None
     try:
         df = pd.read_csv(data_path)

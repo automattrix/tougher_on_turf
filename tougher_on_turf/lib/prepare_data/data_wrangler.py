@@ -25,5 +25,17 @@ def get_playkeys(df: pd.DataFrame) -> pd.DataFrame:
         yield play_keys
 
 
-def get_isinjured():
+def get_player_injury_df(playerkey, isinjured, injury_data):
+    # ['PlayerKey', 'GameID', 'PlayKey', 'BodyPart', 'Surface', 'DM_M1', 'DM_M7', 'DM_M28', 'DM_M42']
+    include_keys = ['PlayerKey', 'GameID', 'PlayKey', 'BodyPart', 'Surface', 'DM_M1', 'DM_M7', 'DM_M28', 'DM_M42']
+    if isinjured is True:
+        player_injury_df = injury_data.loc[injury_data['PlayerKey'] == playerkey]
+    else:
+        player_injury_df = pd.DataFrame()
+        player_injury_df[include_keys] = pd.DataFrame([[None for x in include_keys]])
+    print(player_injury_df)
+    return player_injury_df
+
+
+def concat_df():
     tmp = ''
