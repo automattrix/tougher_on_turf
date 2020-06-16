@@ -4,7 +4,7 @@ from typing import List, AnyStr
 
 class Player:
     def __init__(self, playerkey: AnyStr, player_df: pd.DataFrame):
-        self.playerkey = playerkey
+        self.playerkey = str(playerkey)
         self.player_df = player_df
         self.roster_position = self.get_roster_position()
         self.is_injured = False

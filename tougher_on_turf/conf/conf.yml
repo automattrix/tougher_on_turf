@@ -2,3 +2,9 @@ data:
   injury_record: "./tougher_on_turf/data/01_raw/InjuryRecord.csv"
   play_list: "./tougher_on_turf/data/01_raw/PlayList.csv"
   play_track_data: "./tougher_on_turf/data/01_raw/PlayerTrackData.csv"
+
+  intermediate: "./tougher_on_turf/data/02_intermediate"
+
+preprocess:  # To regenerate pkl for player, set overwrite: True AND add playerkeys to playerkey_list
+  overwrite: True
+  playerkey_list: ['27363']
