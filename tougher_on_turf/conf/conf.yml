@@ -3,8 +3,19 @@ data:
   play_list: "./tougher_on_turf/data/01_raw/PlayList.csv"
   play_track_data: "./tougher_on_turf/data/01_raw/PlayerTrackData.csv"
 
+  raw: "./tougher_on_turf/data/01_raw"
   intermediate: "./tougher_on_turf/data/02_intermediate"
+  primary: "./tougher_on_turf/data/03_primary"
 
 preprocess:  # To regenerate pkl for player, set overwrite: True AND add playerkeys to playerkey_list
   overwrite: True
-  playerkey_list: ['27363']
+  playerkey_list: ['41084']
+
+preprocess_playdata:
+  regenerate: True
+  compression_level: 9
+  chunksize: 500000
+  filename: "nfl_trackdata.h5"
+
+process_aggregates:
+  playerkey_list: ['41084']

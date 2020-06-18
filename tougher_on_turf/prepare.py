@@ -1,7 +1,10 @@
 from tougher_on_turf.lib import Player
 from tougher_on_turf.lib.utils import load_configs, load_csv, save_pickle, load_pickle
 from tougher_on_turf.lib.prepare_data import get_playerkeys, get_playkeys, get_player_df, get_player_injury_df
+from tougher_on_turf.lib.preprocess_playdata import datastore
+
 import os
+import contextlib
 
 
 def preprocess_playlist():
@@ -66,3 +69,22 @@ def preprocess_playlist():
             save_pickle(output_path=player_pickle_path, data=player, overwrite_keys=overwrite_keys)
 
         del player
+
+
+def preprocess_playdata():
+    data_paths = load_configs(conf_key='data')
+    preprocess_conf = load_configs(conf_key='preprocess_playdata')
+    if preprocess_conf['regenerate']:
+        print("Regenerating HDF output file...")
+
+        with contextlib.suppress:
+            os.remove(f"{data_paths['intermediate']}/{preprocess_conf['filename']}")
+
+        datastore.write_h5()
+
+    else:
+        print("Not generating new HDF output file")
+
+
+
+

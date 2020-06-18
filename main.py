@@ -6,6 +6,7 @@ from pathlib import Path
 def main():
     load_context(Path.cwd())
     prepare.preprocess_playlist()
+    prepare.preprocess_playdata()
 
 
 if __name__ =='__main__':

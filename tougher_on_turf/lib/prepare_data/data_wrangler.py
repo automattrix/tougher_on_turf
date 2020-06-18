@@ -34,3 +34,13 @@ def get_player_injury_df(playerkey, isinjured, injury_data):
         player_injury_df[include_keys] = pd.DataFrame([[None for x in include_keys]])
 
     return player_injury_df
+
+
+def extract_playerkey(input_playkey):
+    try:
+        tmp_key = str(input_playkey).split('-')
+        player_key = tmp_key[0]
+    except IndexError as error:
+        print(error)
+        player_key = None
+    return player_key
