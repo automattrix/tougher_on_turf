@@ -3,7 +3,7 @@ from typing import Any, List
 
 
 def get_playerkeys(df: pd.DataFrame) -> List:
-    player_keys = df['PlayerKey'].unique()
+    player_keys = df['PlayerKey'].unique().tolist()
     return player_keys
 
 

@@ -22,7 +22,7 @@ class Player:
         return roster_position
 
     def check_is_injured(self, injury_keys: List) -> bool:
-        if self.playerkey in injury_keys:
+        if str(self.playerkey) in injury_keys:
             self.is_injured = True
         else:
             self.is_injured = False
