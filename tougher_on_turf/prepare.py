@@ -74,17 +74,19 @@ def preprocess_playlist():
 def preprocess_playdata():
     data_paths = load_configs(conf_key='data')
     preprocess_conf = load_configs(conf_key='preprocess_playdata')
-    if preprocess_conf['regenerate']:
-        print("Regenerating HDF output file...")
+    hdf_output_path = f"{data_paths['intermediate']}/{preprocess_conf['filename']}"
+    if os.path.exists(hdf_output_path):
+        if preprocess_conf['regenerate']:
+            print("Regenerating HDF output file...")
 
-        with contextlib.suppress:
-            os.remove(f"{data_paths['intermediate']}/{preprocess_conf['filename']}")
+            with contextlib.suppress:
+                os.remove(hdf_output_path)
 
-        datastore.write_h5()
-
+            datastore.write_h5()
+        else:
+            print("Not generating new HDF output file")
     else:
-        print("Not generating new HDF output file")
-
+        datastore.write_h5()
 
 
 

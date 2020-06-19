@@ -12,7 +12,7 @@ def write_h5():
     for chunk in pd.read_csv(data_paths['play_track_data'], chunksize=preprocess_conf['chunksize']):
         chunk['PlayerKey'] = chunk['PlayKey'].apply(data_wrangler.extract_playerkey)
         unique_players = chunk['PlayerKey'].unique()
-        print(unique_players)
+        print(f"Writing data for: {unique_players}")
 
         for player in unique_players:
             keyname = f'player_{player}'
