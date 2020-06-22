@@ -79,8 +79,12 @@ def preprocess_playdata():
         if preprocess_conf['regenerate']:
             print("Regenerating HDF output file...")
 
-            with contextlib.suppress:
+            try:
                 os.remove(hdf_output_path)
+            except OSError as e:
+                print(e)
+            except Exception as e:
+                print(f"Unexpected exception: {e}")
 
             datastore.write_h5()
         else:
