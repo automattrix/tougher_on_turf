@@ -36,7 +36,6 @@ class Player:
         # Re-assign self
         df = df.join(player_injury_df, rsuffix="_test")
         self.player_df = df
-        self.player_df.to_csv(f"test_{self.playerkey}.csv")
 
 
 class Play(Player):

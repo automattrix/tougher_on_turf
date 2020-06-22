@@ -36,6 +36,16 @@ def get_player_injury_df(playerkey, isinjured, injury_data):
     return player_injury_df
 
 
+def clean_gamekey(playkey):
+    clean_key = None
+    try:
+        clean_key = str(playkey).split('-')
+        clean_key = f"{clean_key[0]}_{clean_key[1]}"
+    except Exception as e:
+        print(e)
+    return clean_key
+
+
 def extract_playerkey(input_playkey):
     try:
         tmp_key = str(input_playkey).split('-')
